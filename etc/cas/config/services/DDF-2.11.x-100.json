@@ -1,0 +1,8 @@
+{
+  "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "https://localhost:8993/services/saml",
+  "name" : "DDF 2.11.x SAML Service",
+  "id" : 100,
+  "evaluationOrder" : 0,
+  "metadataLocation" : "https://localhost:8993/services/saml/sso/metadata"
+}
