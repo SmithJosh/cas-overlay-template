@@ -1,5 +1,8 @@
 #!/bin/bash
 
+TRUSTSTORE="/etc/cas/thetruststore"
+OPTS="-Djavax.net.ssl.trustStore=$TRUSTSTORE"
+OPTS="$OPTS -Djavax.net.ssl.trustStorePassword=changeit"
 
 function copy() {
 	echo -e "Creating configuration directory under /etc/cas"
@@ -32,7 +35,7 @@ function clean() {
 function package() {
     shift
 	./mvnw clean package -T 5 "$@"
-	# copy
+	copy
 }
 
 function bootrun() {
@@ -41,11 +44,11 @@ function bootrun() {
 }
 
 function debug() {
-	package && java -Xdebug -Xrunjdwp:transport=dt_socket,address=5000,server=y,suspend=n -jar target/cas.war
+	package && java $OPTS -Xdebug -Xrunjdwp:transport=dt_socket,address=5000,server=y,suspend=n -jar target/cas.war
 }
 
 function run() {
-	package && java -jar target/cas.war
+	package && java $OPTS -jar target/cas.war
 }
 
 function runalone() {

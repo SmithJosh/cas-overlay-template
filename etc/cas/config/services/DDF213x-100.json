@@ -1,0 +1,18 @@
+{
+  "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "https://localhost:8993/services/saml",
+  "name" : "DDF 2.13.x SAML Service",
+  "id" : 100,
+  "evaluationOrder" : 0,
+  "metadataLocation" : "https://localhost:8993/services/saml/sso/metadata",
+  "signAssertions" : "true",
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnMappedAttributeReleasePolicy",
+    "allowedAttributes" : {
+      "@class" : "java.util.TreeMap",
+      "uid" : "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier",
+      "mail" : "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+      "givenName" : "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname"
+    }
+  }
+}
